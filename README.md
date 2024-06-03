@@ -4,6 +4,6 @@ This is an application for collection of speech data for the purposes of the ASR
 
 * Enter the language code for the speech data you want to collect e.g. 'eng'
 * Copy IDs and text from spreadsheet and paste them into the tool
-  ![spreadsheet text example](spreadsheetimg.png)
+<img src="spreadsheetimg.png" alt="drawing" width="500"/>
 * For each text, make a recording by starting and stopping the recording with the tool
 * After going through all the text files, you will be able to download the audio files in a zip file
