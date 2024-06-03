@@ -3,6 +3,7 @@ let audioChunks = [];
 let currentIndex = 0;
 let lines = [];
 let recordings = {};
+let metadata = []; // Store metadata for each recording
 
 document.getElementById('loadTextButton').addEventListener('click', () => {
     const textAreaValue = document.getElementById('inputTextArea').value;
@@ -44,6 +45,9 @@ document.getElementById('recordButton').addEventListener('click', async () => {
         let audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         audioChunks = [];
         recordings[filename] = audioBlob;
+
+        // Add metadata entry
+        metadata.push({ filename, text: lines[currentIndex].text });
 
         // Check if all recordings are completed
         if (Object.keys(recordings).length === lines.length) {
@@ -92,6 +96,15 @@ document.getElementById('downloadAllButton').addEventListener('click', () => {
     for (let filename in recordings) {
         folder.file(filename, recordings[filename]);
     }
+
+    // Create metadata.csv content
+    let csvContent = "filename,text\n";
+    metadata.forEach(entry => {
+        csvContent += `${entry.filename},${entry.text}\n`;
+    });
+
+    // Add metadata.csv to the zip
+    folder.file("metadata.csv", csvContent);
 
     zip.generateAsync({ type: "blob" })
         .then(function (content) {
