@@ -6,7 +6,7 @@
 <title>Speech Recognition Tutorial</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: Roboto, sans-serif;
         text-align: center;
         margin-top: 50px;
     }
@@ -19,12 +19,21 @@
         width: 80%;
         margin-top: 20px;
     }
+    textarea {
+        height: 150px; /* Increased height for the textarea */
+    }
+    #logo {
+        width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+    }
 </style>
 </head>
 <body>
 
-<h2>DSA 2024 Summer School</h2>
-<h1>Speech Technology</h1>
+<img id="logo" src="sb-logo.png" alt="Logo" />
+
+<h1>DSA 2024 | Speech Technology</h1>
 
 <input id="languageCode" type="text" placeholder="Language code, e.g., eng, swh, lug." />
 <textarea id="inputTextArea" placeholder="Paste your tab-separated values here..."></textarea>
